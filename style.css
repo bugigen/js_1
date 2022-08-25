@@ -6,6 +6,12 @@
 
 body {
   background: #d1d1d1;
+  font-family: 'Comic Sans MS', cursive;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 10px;
 }
 
 
