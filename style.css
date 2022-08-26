@@ -23,3 +23,9 @@ button {
   cursor: pointer;
 }
 
+hr {
+  width: 90%;
+  border: none;
+  border-top: 3px solid blue;
+}
+

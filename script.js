@@ -1,5 +1,5 @@
-let content = document.querySelector("#content");
-let product = document.querySelector("#product");
+let content = document.querySelector("#contentCases");
+let product = document.querySelector("#contentMotherboards");
 let btn = document.querySelector("#btn");
 
 const url = "https://run.mocky.io/v3/adf501fe-5592-4766-8a10-0bc24f328807";
@@ -12,10 +12,12 @@ const getJson = async () => {
       throw new Error(message);
     }
     const answer = await response.json();
-    console.log(answer);
-    // const answerText = await response.text();
-    content.textContent = JSON.stringify(answer, null, 2);
-    product.textContent = answer.Cases[0].name;
+    console.log(Object.keys(answer).length);
+    for(let item = 0; item < answer.Cases.length; item++) {
+      content.innerHTML +=
+        `Case name: <b>${answer.Cases[item].name}</b>,
+        price: <b>${answer.Cases[item].price}</b> <br>`;
+    }
   } catch (e) {
     console.log(e);
   }
