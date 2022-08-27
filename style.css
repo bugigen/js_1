@@ -23,9 +23,8 @@ button {
   cursor: pointer;
 }
 
-hr {
-  width: 90%;
-  border: none;
-  border-top: 3px solid blue;
+button:hover {
+  background: rgb(140, 188, 204);
 }
+
 

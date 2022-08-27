@@ -1,10 +1,9 @@
-let content = document.querySelector("#contentCases");
-let product = document.querySelector("#contentMotherboards");
+let content = document.querySelector("#content");
 let btn = document.querySelector("#btn");
 
 const url = "https://run.mocky.io/v3/adf501fe-5592-4766-8a10-0bc24f328807";
 
-const getJson = async () => {
+let getJson = async () => {
   try {
     const response = await fetch(url);
     if (response.ok === "false") {
@@ -12,12 +11,15 @@ const getJson = async () => {
       throw new Error(message);
     }
     const answer = await response.json();
-    console.log(Object.keys(answer).length);
-    for(let item = 0; item < answer.Cases.length; item++) {
-      content.innerHTML +=
-        `Case name: <b>${answer.Cases[item].name}</b>,
-        price: <b>${answer.Cases[item].price}</b> <br>`;
+    for (let prod in answer) {
+      content.innerHTML += `<b>${prod}:</b> <br>`;
+      for (let item = 0; item < answer[prod].length; item++) {
+        content.innerHTML += `&nbsp; <b>Name:</b> ${answer[prod][item].name},
+          <b>price:</b> ${answer[prod][item].price} руб <br>`
+      }
+      content.innerHTML += "<br>";
     }
+    btn.removeEventListener("click", getJson);
   } catch (e) {
     console.log(e);
   }
