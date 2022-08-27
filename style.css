@@ -21,6 +21,7 @@ body {
 button {
   padding: 4px;
   cursor: pointer;
+  transform: scale(1.2);
 }
 
 button:hover {
